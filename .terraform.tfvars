@@ -10,7 +10,7 @@ ec2_size = "t2.micro"
 
 volume_size = 10
 
-sg_name = "terraform-sg-name"
+sg_name = "terraform-sg-andrew"
 
 ssh_key_name = "ich"
 
