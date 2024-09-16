@@ -43,6 +43,7 @@ data "aws_ami" "amazon-linux-2" {
 # Configure the EC2 instance in a public subnet
 
 
+
 resource "aws_instance" "ec2_public" {
   key_name                   = var.ssh_key_name
   ami                        = data.aws_ami.amazon-linux-2.id
@@ -58,5 +59,8 @@ resource "aws_instance" "ec2_public" {
     delete_on_termination = true
     encrypted             = true
     volume_size           = var.volume_size
+  }
+  tags = {
+    Name = var.instance_name_tag
   }
 }
