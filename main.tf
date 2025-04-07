@@ -20,6 +20,14 @@ resource "aws_security_group" "allow_ssh_pub" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  ingress {
+    description = "HTTP from the internet"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   tags = {
     Name = "terraform-allow_ssh_pub"
   }
@@ -62,5 +70,15 @@ resource "aws_instance" "ec2_public" {
   }
   tags = {
     Name = var.instance_name_tag
+  }
+}
+
+# S3 bucket
+resource "aws_s3_bucket" "my_bucket" {
+  bucket = var.bucket_name
+
+  tags = {
+    Name        = var.bucket_name
+    Environment = "Dev"
   }
 }

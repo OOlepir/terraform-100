@@ -27,3 +27,9 @@ variable "ssh_key_name" {
 variable "instance_name_tag" {
   type = string
 }
+
+variable "bucket_name" {
+  description = "Name S3 bucket"
+  type        = string
+  default     = "290724-bucket-oolepir"
+}
